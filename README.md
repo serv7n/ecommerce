@@ -20,7 +20,7 @@ Este projeto é um sistema básico de e-commerce desenvolvido com foco em aprend
 ## 📁 Estrutura de Diretórios
 
 A organização do projeto segue o padrão MVC, com as seguintes pastas principais:
-- `/application` - Contém controladores, modelos e views
+- `/app` - Contém controladores, modelos e views
 - `/assets` - Arquivos estáticos como CSS, JS e imagens
 
 ## ⚙️ Configuração e Execução
