@@ -21,7 +21,7 @@ function printData($data, $die = true){
 
 function logger($messegem = '', $level = 'info'){
     $log = new Logger('registros_logs');
-    $log->pushHandler( handler: new StreamHandler('../logs.log'));
+    $log->pushHandler( handler: new StreamHandler('logs.log'));
     switch($level){
         case 'info':
             $log->info($messegem);

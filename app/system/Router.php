@@ -68,8 +68,8 @@ class Router
 
     // Lida com exceções inesperadas
     private static function handleException($err)
-    {
-        logger($err->getMessage(), "warning");
+    {   
+       
         $controller = new main();
         $controller->erro404(["message" => "Oops! Página não encontrada"]);
     }

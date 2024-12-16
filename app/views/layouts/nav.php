@@ -74,7 +74,14 @@
                     <input class="form-control search-box" type="search" placeholder="Buscar..." aria-label="Search">
                 </form>
 
-                <div class="d-flex align-items-center">
+
+
+                    <!-- Usuário -->
+                    <?php if (empty($_SESSION['user'])) : ?>
+                        <a href="?ct=login&mt=login" class="btn btn-outline-primary btn-custom me-2">Login</a>
+                        <a href="?ct=login" class="btn btn-primary btn-custom">Cadastro</a>
+                    <?php else : ?>
+                        <div class="d-flex align-items-center">
                     <!-- Notificações -->
                     <div class="position-relative me-3">
                         <button class="btn btn-light rounded-circle" type="button" aria-label="Notificações" onclick="toggleNotifications()">
@@ -128,17 +135,11 @@
 
                     <!-- Carrinho -->
                     <div class="position-relative me-3">
-                        <a class="btn btn-light rounded-circle" href="carrinho.php" aria-label="Carrinho">
+                        <a class="btn btn-light rounded-circle" href="index.php?ct=compra&mt=ca" aria-label="Carrinho">
                             <i class="bi bi-cart"></i>
                             <span class="notification-badge bg-primary text-white">2</span>
                         </a>
                     </div>
-
-                    <!-- Usuário -->
-                    <?php if (empty($_SESSION['user'])) : ?>
-                        <a href="?ct=login&mt=login" class="btn btn-outline-primary btn-custom me-2">Login</a>
-                        <a href="?ct=login" class="btn btn-primary btn-custom">Cadastro</a>
-                    <?php else : ?>
                         <div class="dropdown">
                             <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="assets/img/usuario-de-perfil.png" alt="Foto" class="profile-image me-2">
