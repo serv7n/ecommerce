@@ -59,13 +59,13 @@ class Router
     private static function handleInvalidRequest($message)
     {
         $controller = new main();
-        $controller->erro404($message); // Customize o erro404 para aceitar uma mensagem personalizada
+        $controller->erro404($message); 
     }
 
     // Lida com exceções inesperadas
     private static function handleException($err)
     {
-        error_log($err->getMessage()); // Log do erro para debug
+        logger($err->getMessage(), "warning");
         $controller = new main();
         $controller->erro404(["message"=>"Oops! Página não encontrada"]);
     }
