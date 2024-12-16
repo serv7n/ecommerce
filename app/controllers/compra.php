@@ -124,7 +124,10 @@ class compra extends baseController
 
     function checkout(){
         $this->view('layouts/nav');
-        $this->view('checkout');
+        $CompraModel = new CompraModel();
+        $dados = $CompraModel->pegar_produtos([':id' => $_GET['id']]);
+        
+        $this->view('checkout',$dados->results[0]);
         $this->view('layouts/footer');
     }
 }

@@ -1,30 +1,27 @@
-
 <div class="container py-5">
     <div class="row">
         <!-- Coluna do Produto -->
         <div class="col-lg-6 mb-4">
             <div class="card border-0 shadow-sm">
-                <img src="produto.jpg" class="card-img-top" alt="Produto">
+                <img src="data:image/jpeg;base64,
+                <?php
+                if (!empty($produto_imagem)) {
+                    echo base64_encode($produto_imagem);
+                }
+                ?>"                               
+                class="card-img-top" alt="Produto">
                 <div class="card-body">
-                    <h1 class="card-title h2">Nome do Produto Premium</h1>
-                    
-                    <!-- Avaliações -->
-                    <div class="mb-3">
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star-half-alt text-warning"></i>
-                        <span class="ms-2">(4.5/5 - 128 avaliações)</span>
-                    </div>
+                    <h1 class="card-title h2"><?= $nome ?></h1>
 
-                    <p class="card-text lead">Descrição detalhada do produto com seus principais benefícios e características exclusivas.</p>
+                    <!-- Avaliações -->
+
+                    <p class="card-text lead"><?= $descricao ?></p>
 
                     <!-- Preço -->
                     <div class="mb-4">
-                        <span class="old-price h5">R$ 299,90</span>
-                        <div class="product-price">R$ 199,90</div>
-                        <span class="badge bg-danger">33% OFF</span>
+                        <span class="old-price h5">R$ <?= $valor ?></span>
+                        <div class="product-price">R$ <?= $valor * 0.80 ?></div>
+                        <span class="badge bg-danger">20% OFF</span>
                     </div>
 
                     <!-- Benefícios -->
@@ -191,8 +188,3 @@
         </div>
     </div>
 </footer>
-
-
-
-
-

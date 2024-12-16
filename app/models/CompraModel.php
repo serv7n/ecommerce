@@ -26,4 +26,21 @@ class CompraModel extends BaseModel
         $this->db_connect();
         return $this->query($sql, $paramets)->status;
     }
+    function pegar_produtos($id =[':id' => 1]){
+        $this->db_connect();
+        $sql = 'SELECT 
+                    p.id,
+                    p.nome,
+                p.quantidade,
+                p.valor,
+                p.descricao,
+                (SELECT i.imagem 
+                    FROM imagem i 
+                    WHERE i.produtos_id = p.id 
+                    ORDER BY i.id ASC 
+                    LIMIT 1) AS produto_imagem
+                    FROM produtos p WHERE p.id = :id;';
+    
+        return $this->query($sql,$id);
+    }
 }

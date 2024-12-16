@@ -56,8 +56,8 @@
 
                 <!-- Botões de Ação -->
                 <div class="d-grid gap-2 mb-4">
-                    <button class="btn btn-primary btn-lg">Comprar Agora</button>
-                    <button class="btn btn-outline-primary btn-lg">Adicionar ao Carrinho</button>
+                    <a href="?ct=compra&mt=checkout&id=<?=$_GET['id']?>" class="btn btn-primary btn-lg">Comprar Agora</a>
+                    <a class="btn btn-outline-primary btn-lg">Adicionar ao Carrinho</a>
                 </div>
 
                 <!-- Informações de Entrega -->
