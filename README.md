@@ -12,7 +12,7 @@ Este projeto é um sistema básico de e-commerce desenvolvido com foco em aprend
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Backend**: PHP (CodeIgniter Framework)
+- **Backend**: PHP
 - **Frontend**: HTML, CSS, JavaScript (com Bootstrap)
 - **Banco de Dados**: MySQL
 - **Outras**: 
