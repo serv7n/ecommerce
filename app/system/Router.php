@@ -1,4 +1,5 @@
 <?php
+
 namespace app\System;
 
 use app\Controllers\main;
@@ -29,17 +30,20 @@ class Router
         if (isset($parameters['id'])) {
             $parameters['id'] = filter_var($parameters['id'], FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]]);
             if ($parameters['id'] === false) {
-                self::handleInvalidRequest(["message"=>"Parâmetro 'id' inválido"]);
+                self::handleInvalidRequest(["message" => "Parâmetro 'id' inválido"]);
                 return;
             }
         }
 
         // Validar 'lm'
         if (isset($parameters['lm'])) {
-            $parameters['lm'] = filter_var($parameters['lm'], FILTER_VALIDATE_INT, ["options" => ["min_range" => 0]]);
+            $parameters['lm'] = filter_var($parameters['lm'], FILTER_VALIDATE_INT);
             if ($parameters['lm'] === false) {
-                self::handleInvalidRequest(["message"=>"Parâmetro 'lm' inválido"]);
+                self::handleInvalidRequest(["message" => "Parâmetro 'lm' inválido"]);
                 return;
+            }
+            if ($parameters['lm'] < 0) {
+                $_GET['lm'] = 0;
             }
         }
 
@@ -59,7 +63,7 @@ class Router
     private static function handleInvalidRequest($message)
     {
         $controller = new main();
-        $controller->erro404($message); 
+        $controller->erro404($message);
     }
 
     // Lida com exceções inesperadas
@@ -67,6 +71,6 @@ class Router
     {
         logger($err->getMessage(), "warning");
         $controller = new main();
-        $controller->erro404(["message"=>"Oops! Página não encontrada"]);
+        $controller->erro404(["message" => "Oops! Página não encontrada"]);
     }
 }

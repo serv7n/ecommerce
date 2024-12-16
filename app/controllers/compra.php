@@ -24,19 +24,10 @@ class compra extends baseController
     function mostrar_comentario()
     {
         $id =  $_GET['id'];
-
-
-        $lm = 0; // Valor padrão para evitar erros
-
+        $lm = 0;
         if (isset($_GET['lm'])) {
-            $lm = filter_var($_GET['lm'], FILTER_VALIDATE_INT, ["options" => ["min_range" => 0]]);
-            if ($lm === false) {
-                $lm = 0;
-            }
+            $lm = $_GET['lm'];
         }
-        
-
-
 
         // Instancia o modelo CompraModel
         $CompraModel = new CompraModel();
@@ -92,15 +83,11 @@ class compra extends baseController
     }
     function pagina_venda()
     {
-        // view
         $this->view('layouts/nav');
 
-        // model
         $MainModel = new MainModel();
 
         $id = $_GET['id'];
-
-
 
         // pega o produto
         $result  = $MainModel->mostrar_produto($id)->results[0];
@@ -108,6 +95,7 @@ class compra extends baseController
         // pega as imagens do produto e armazena nos results
 
         $result->imagens = $this->pegar_imagem_produtos($id)->results;
+        
         // ==========
         // COMENTARIOS
         $compra = new compra();
@@ -132,5 +120,11 @@ class compra extends baseController
         // pega da base de dados as imagens dos produtos
         $MainModel = new MainModel();
         return $MainModel->imagem_produto($id);
+    }
+
+    function chechout(){
+        $this->view('layouts/nav');
+        $this->view('checkout');
+        $this->view('layouts/footer');
     }
 }

@@ -50,10 +50,7 @@
 
                 <!-- Seletor de Quantidade -->
                 <div class="quantity-selector mb-4">
-                    <span>Quantidade:</span>
-                    <button class="quantity-btn">-</button>
-                    <span>1</span>
-                    <button class="quantity-btn">+</button>
+
                     <span class="text-muted">(<?= $quantidade ?> disponíveis)</span>
                 </div>
 
@@ -134,12 +131,12 @@
             <ul class="pagination justify-content-center">
                 <li class="page-item">
                     <a class="page-link" href="?ct=compra&mt=pagina_venda&id=2&lm=<?= empty($_GET['lm']) ? 0 : $_GET['lm']
-                    -1; ?> " tabindex="-1">Anterior</a>
+                    -3; ?> " tabindex="-1">Anterior</a>
                 </li>
 
                 <li class="page-item">
-                    <a class="page-link" href="?ct=compra&mt=pagina_venda&id=2&lm=<?= empty($_GET['lm']) ? 1 : $_GET['lm']
-                    +1; ?>">Próximo</a>
+                    <a class="page-link" href="?ct=compra&mt=pagina_venda&id=2&lm=<?= empty($_GET['lm']) ? 3 : $_GET['lm']
+                    +3; ?>">Próximo</a>
                 </li>
             </ul>
         </nav>
