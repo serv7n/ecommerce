@@ -1,0 +1,24 @@
+{
+    "name": "sys4soft/app",
+    "description": "Aplication Gestationn",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Leandro"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^3.8",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\Controllers\\":["app/controllers"],
+            "app\\Models\\":["app/models"],
+            "app\\System\\":["app/system"]
+        },
+        "files": ["app/config.php","app/helpers/Functions.php"]
+
+        
+    }
+}
