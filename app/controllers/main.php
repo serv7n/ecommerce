@@ -40,7 +40,7 @@ class main extends baseController
     }
 
 
-    function erro404(){
-        $this->view('layouts/404');
+    function erro404($message){
+        $this->view('layouts/404',$message);
     }
 }

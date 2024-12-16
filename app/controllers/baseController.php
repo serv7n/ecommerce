@@ -11,7 +11,6 @@ abstract class baseController{
         else if(!(is_array($data))){
             die("data not is  array");
         }
-        
         extract($data);
         
         $file = dirname(__FILE__, levels: 2)."/views/$view.php";

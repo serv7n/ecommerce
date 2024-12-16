@@ -29,7 +29,7 @@ class Router
         if (isset($parameters['id'])) {
             $parameters['id'] = filter_var($parameters['id'], FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]]);
             if ($parameters['id'] === false) {
-                self::handleInvalidRequest("Parâmetro 'id' inválido");
+                self::handleInvalidRequest(["message"=>"Parâmetro 'id' inválido"]);
                 return;
             }
         }
@@ -38,7 +38,7 @@ class Router
         if (isset($parameters['lm'])) {
             $parameters['lm'] = filter_var($parameters['lm'], FILTER_VALIDATE_INT, ["options" => ["min_range" => 0]]);
             if ($parameters['lm'] === false) {
-                self::handleInvalidRequest("Parâmetro 'lm' inválido");
+                self::handleInvalidRequest(["message"=>"Parâmetro 'lm' inválido"]);
                 return;
             }
         }
@@ -67,6 +67,6 @@ class Router
     {
         error_log($err->getMessage()); // Log do erro para debug
         $controller = new main();
-        $controller->erro404("Ocorreu um erro inesperado");
+        $controller->erro404(["message"=>"Oops! Página não encontrada"]);
     }
 }
