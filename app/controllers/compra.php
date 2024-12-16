@@ -122,7 +122,7 @@ class compra extends baseController
         return $MainModel->imagem_produto($id);
     }
 
-    function chechout(){
+    function checkout(){
         $this->view('layouts/nav');
         $this->view('checkout');
         $this->view('layouts/footer');
