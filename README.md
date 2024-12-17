@@ -15,7 +15,7 @@ Este projeto é um sistema básico de e-commerce desenvolvido com foco em aprend
 - **Backend**: PHP
 - **Frontend**: HTML, CSS, JavaScript (com Bootstrap)
 - **Banco de Dados**: MySQL
-- **Outras**: 
+- **Outras**: Web Pack
 
 ## 📁 Estrutura de Diretórios
 
