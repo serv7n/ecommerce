@@ -161,5 +161,10 @@ class login extends baseController
         unset($_SESSION['user']);
         $this->login();
     }
-    
+    function perfil()
+    {
+        $this->view('layouts/nav');
+        $this->view('perfil');
+        $this->view('layouts/footer');
+    }
 }

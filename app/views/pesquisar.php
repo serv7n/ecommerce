@@ -4,37 +4,28 @@
     <!-- Cabeçalho da Categoria -->
     <div class="row mb-4">
         <div class="col-12">
-            <h2 class="mb-3">Eletrônicos</h2>
+            <h2 class="mb-3">Pesquisar por <?=$_GET['p']?></h2>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Eletrônicos</li>
+                    
                 </ol>
             </nav>
         </div>
     </div>
 
-    <!-- Filtros e Ordenação -->
-    <div class="row mb-4">
-        <div class="col-md-6">
-            <select class="form-select">
-                <option selected>Ordenar por</option>
-                <option>Mais Vendidos</option>
-                <option>Menor Preço</option>
-                <option>Maior Preço</option>
-            </select>
-        </div>
-    </div>
-
+<?php
+//  printData($dados);
+?>
 <div class="product-grid">
     <div class="container">
         <div class="row g-4">
             <!-- Card de Produto 1 -->
-            <?php  if(!(empty($_SESSION['produtos']))):?>
+            <?php  if(!(empty($dados))):?>
         <div class="product-grid">
             <div class="container">
                 <div class="row g-4">
-            <?php foreach($_SESSION['produtos'] as $produto): ?>
+            <?php foreach($dados as $produto): ?>
             <!-- Card de Produto 1 -->
             <div class="col-12 col-sm-6 col-lg-3">
                 <div class="product-card">
@@ -68,7 +59,7 @@
                             <i class="bi bi-check-circle-fill"></i> Em estoque
                         </div>
                         <a class="btn btn-primary add-to-cart" 
-                        href="?ct=main&mt=pagina_venda&id=<?=$produto->id?>">
+                        href="?ct=compra&mt=pagina_venda&id=<?=$produto->id?>">
                             <i class="bi bi-cart-plus me-2"></i>
                             Adicionar ao Carrinho
                         </a>
@@ -79,30 +70,7 @@
             
             <?php endif; ?>
     <!-- Paginação -->
-    <div class="row mt-5">
-        <div class="col-12">
-            <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Anterior</a>
-                    </li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Próximo</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</div>
+
 
 <!-- JS e dependências -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

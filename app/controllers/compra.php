@@ -10,7 +10,7 @@ use app\Models\CompraModel;
 
 
 use app\Models\MainModel;
-use Exception;
+
 
 class compra extends baseController
 {
@@ -126,7 +126,7 @@ class compra extends baseController
         $this->view('layouts/nav');
         $CompraModel = new CompraModel();
         $dados = $CompraModel->pegar_produtos([':id' => $_GET['id']]);
-        
+
         $this->view('checkout',$dados->results[0]);
         $this->view('layouts/footer');
     }

@@ -46,9 +46,15 @@ class Router
                 $_GET['lm'] = 0;
             }
         }
+        if(isset($parameters['p'])){
+            if(!(is_string($parameters['p']))){
+                self::handleInvalidRequest(["message" => "Parâmetro 'p' inválido"]);
+                return;
+            }
 
+        }
         // Remover 'id' e 'lm' dos parâmetros
-        unset($parameters['id'], $parameters['lm'], $parameters['ct'], $parameters['mt']);
+        unset($parameters['id'], $parameters['lm'], $parameters['ct'], $parameters['mt'],$parameters['p']);
 
         try {
             $class = "app\Controllers\\$controller";
@@ -69,7 +75,6 @@ class Router
     // Lida com exceções inesperadas
     private static function handleException($err)
     {   
-       
         $controller = new main();
         $controller->erro404(["message" => "Oops! Página não encontrada"]);
     }

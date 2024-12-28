@@ -38,7 +38,17 @@ class main extends baseController
         $_SESSION['produtos'] = $MainModel->pegar_produtos()->results;
         
     }
-
+    function pesquisar(){
+        
+        $p = $_GET['p'];
+        $MainModel = new MainModel();
+    
+       
+        $dados = ['dados' =>  $dados = $MainModel->pesquisar_produtos($p)->results];
+        $this->view('layouts/nav');
+        $this->view('pesquisar',$dados);
+        $this->view('layouts/footer');
+    }
 
     function erro404($message){
         $this->view('layouts/404',$message);

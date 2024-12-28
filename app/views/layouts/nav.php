@@ -51,12 +51,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="?ct=main&mt=categoria">
-                            <i class="bi bi-grid me-1"></i>
-                            Categoria
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="?ct=main&mt=sobre">
                             <i class="bi bi-people me-1"></i>
                             Sobre
@@ -70,8 +64,10 @@
                     </li>
                 </ul>
 
-                <form class="d-flex me-3" role="search">
-                    <input class="form-control search-box" type="search" placeholder="Buscar..." aria-label="Search">
+                <form class="d-flex me-3"  action="index.php?" method="get">
+                    <input type="hidden" name="ct" value="main">
+                    <input type="hidden" name="mt" value="pesquisar">
+                    <input class="form-control search-box" type="text" placeholder="Buscar..." aria-label="Search" name="p" >
                 </form>
 
 
@@ -147,23 +143,12 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                 <li>
-                                    <a class="dropdown-item" href="perfil.php">
+                                    <a class="dropdown-item" href="?ct=login&mt=perfil">
                                         <i class="bi bi-person"></i>
                                         Meu Perfil
                                     </a>
                                 </li>
-                                <li>
-                                    <a class="dropdown-item" href="pedidos.php">
-                                        <i class="bi bi-box"></i>
-                                        Meus Pedidos
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="configuracoes.php">
-                                        <i class="bi bi-gear"></i>
-                                        Configurações
-                                    </a>
-                                </li>
+            
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

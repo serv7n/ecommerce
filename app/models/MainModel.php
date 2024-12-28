@@ -36,8 +36,23 @@ class MainModel extends BaseModel{
         $sql = "SELECT * FROM imagem WHERE  :id = produtos_id";
         return $this->query($sql,$paramets);
     }
+    function pesquisar_produtos($p){
+        $paramets = [':p' => $p];
+        $this->db_connect();
+        $sql = "
+    SELECT p.id, p.nome, p.quantidade, p.valor, p.descricao,
+           (SELECT i.imagem                      
+            FROM imagem i
+            WHERE i.produtos_id = p.id  
+            ORDER BY i.id ASC
+            LIMIT 1) AS produto_imagem                     
+    FROM produtos p 
+    WHERE nome LIKE CONCAT('%', :p, '%')";
 
-    // function enviar_comentario(){
-    //     $sql = "INSERT comentarios "
-    // }
+
+        return $this->query($sql,$paramets);
+    }
+    
+
+    
 }

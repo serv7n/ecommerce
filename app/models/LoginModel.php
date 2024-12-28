@@ -32,4 +32,5 @@ class LoginModel extends BaseModel
     
     return $this->query($sql, $dados);
   }
+
 }
