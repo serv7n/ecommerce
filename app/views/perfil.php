@@ -1,3 +1,4 @@
+<?php $user = $_SESSION['user'];?>
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-6">
@@ -6,7 +7,7 @@
                 <h2 class="m-0">Perfil do Usuário</h2>
                 <div class="position-relative">
                     <div class="profile-avatar">
-                        <img src="assets/img/usuario-de-perfil.png" alt="Profile" class="rounded-circle shadow-sm" width="80" height="80">
+                        <img src="assets/img/usuario-de-perfil.png" alt="Profile" class="rounded-circle s   adow-sm" width="80" height="80">
                         <button class="btn btn-sm btn-primary position-absolute bottom-0 end-0 rounded-circle p-2">
                             <i class="fas fa-camera"></i>
                         </button>
@@ -15,9 +16,39 @@
             </div>
 
             <!-- Profile Form -->
+            <?php
+             if(!(empty($_SESSION['error_perfil']))){
+                 if(is_array($_SESSION['error_perfil'])){
+                    foreach($_SESSION['error_perfil'] as $erro){
+                        echo
+                        '<div class="alert alert-warning" role="alert">
+                            '.$erro. '
+                        </div>';
+                    } 
+                }else{
+                    echo
+                    '<div class="alert alert-warning" role="alert">
+                        '.$_SESSION['error_perfil'] . '
+                    </div>';
+                    
+                }
+            }
+            if(!(empty($_SESSION['error_server']))){
+                echo
+                '<div class="alert alert-danger" role="alert">
+                    '.$_SESSION['error_server'] . '
+                </div>';
+            }
+            if(!(empty($_SESSION['sucess_perfil']))){
+                echo
+                '<div class="alert alert-success" role="alert">
+                    '.$_SESSION['sucess_perfil'] . '
+                </div>';
+            }
+            ?>
             <div class="card border-0 shadow-sm">
                 <div class="card-body p-4">
-                    <form id="profileForm" class="needs-validation" novalidate>
+                    <form id="profileForm" class="needs-validation" novalidate action="?ct=login&mt=atualizar_perfil" method="post">
                         <!-- Informações Pessoais -->
                         <div class="mb-4">
                             <h5 class="text-primary mb-3">
@@ -31,9 +62,12 @@
                                            id="userName" 
                                            required
                                            minlength="3"
-                                           pattern="^[A-Za-zÀ-ÿ\s]{3,}$">
+                                           pattern="^[A-Za-zÀ-ÿ\s]{3,}$"
+                                           value="<?=$user['nome']?>"
+                                           name="nome">
+
                                     <div class="invalid-feedback">
-                                        Por favor, insira seu nome completo (mínimo 3 caracteres)
+                                        Por favor, insira seu nome completo 
                                     </div>
                                 </div>
 
@@ -43,10 +77,10 @@
                                         <input type="email" class="form-control form-control-lg bg-white" 
                                                id="userEmail" 
                                                required
-                                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-                                        <button class="btn btn-outline-primary" type="button">
-                                            Verificar
-                                        </button>
+                                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                                                value="<?=$user['email']?>"
+                                               name="email">
+                                
                                     </div>
                                     <div class="invalid-feedback">
                                         Por favor, insira um email válido
@@ -69,7 +103,9 @@
                                                class="form-control form-control-lg bg-white" 
                                                id="currentPassword"
                                                required
-                                               minlength="8">
+                                               minlength="8"
+                                               name="senha"
+                                               >
                                         <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('currentPassword')">
                                             <i class="fas fa-eye"></i>
                                         </button>
@@ -84,7 +120,9 @@
                                                id="newPassword"
                                                required
                                                minlength="8"
-                                               pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+                                               pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                                               name="senha_nova">
+
                                         <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('newPassword')">
                                             <i class="fas fa-eye"></i>
                                         </button>
@@ -104,7 +142,7 @@
                                         <input type="password" 
                                                class="form-control form-control-lg bg-white" 
                                                id="confirmPassword"
-                                               required>
+                                               required name="senha_confirmada">
                                         <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('confirmPassword')">
                                             <i class="fas fa-eye"></i>
                                         </button>
@@ -129,7 +167,7 @@
     </div>
 </div>
 
-<style>
+<style> 
 .form-control:focus {
     border-color: #0d6efd;
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
@@ -148,19 +186,7 @@
 
 <script>
 // Form Validation
-(function () {
-    'use strict'
-    const forms = document.querySelectorAll('.needs-validation')
-    Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-            }
-            form.classList.add('was-validated')
-        }, false)
-    })
-})()
+
 
 // Toggle Password Visibility
 function togglePassword(inputId) {

@@ -32,12 +32,9 @@
                     <div class="product-image">
                         <img src="/api/placeholder/400/320" alt="Produto 1">
                         <div class="product-badges">
-                            <span class="product-badge bg-danger text-white">-20%</span>
-                            <span class="product-badge bg-primary text-white">Novo</span>
+            
                         </div>
-                        <button class="wishlist-btn">
-                            <i class="bi bi-heart"></i>
-                        </button>
+                    
                     </div>
                     <div class="product-details">
                         <div class="product-category"></div>

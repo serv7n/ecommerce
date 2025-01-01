@@ -37,18 +37,23 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-<!-- categorias -->
-<div class="container my-5">
+
+
+
+<!-- <div class="container my-5">
     <div class="row justify-content-center text-center">
-        <!-- Tecnologia -->
-        <div class="col-6 col-sm-4 col-md-3 col-lg mb-4">
+      Tecnologia -->
+        
+      
+        <!-- 
+      <div class="col-6 col-sm-4 col-md-3 col-lg mb-4">
             <div class="category-icon bg-purple rounded-circle d-inline-flex align-items-center justify-content-center mb-2">
                 <i class="fas fa-laptop text-white fa-2x"></i>
             </div>
             <p class="mb-0 category-text">Tecnologia</p>
         </div>
 
-        <!-- Casa -->
+   
         <div class="col-6 col-sm-4 col-md-3 col-lg mb-4">
             <div class="category-icon bg-purple rounded-circle d-inline-flex align-items-center justify-content-center mb-2">
                 <i class="fas fa-home text-white fa-2x"></i>
@@ -56,7 +61,7 @@
             <p class="mb-0 category-text">Casa</p>
         </div>
 
-        <!-- Fitness -->
+      
         <div class="col-6 col-sm-4 col-md-3 col-lg mb-4">
             <div class="category-icon bg-purple rounded-circle d-inline-flex align-items-center justify-content-center mb-2">
                 <i class="fas fa-dumbbell text-white fa-2x"></i>
@@ -64,7 +69,6 @@
             <p class="mb-0 category-text">Fitness</p>
         </div>
 
-        <!-- Entretenimento -->
         <div class="col-6 col-sm-4 col-md-3 col-lg mb-4">
             <div class="category-icon bg-purple rounded-circle d-inline-flex align-items-center justify-content-center mb-2">
                 <i class="fas fa-film text-white fa-2x"></i>
@@ -72,15 +76,13 @@
             <p class="mb-0 category-text">Entretenimento</p>
         </div>
 
-        <!-- Beleza -->
+        
         <div class="col-6 col-sm-4 col-md-3 col-lg mb-4">
             <div class="category-icon bg-purple rounded-circle d-inline-flex align-items-center justify-content-center mb-2">
                 <i class="fas fa-spa text-white fa-2x"></i>
             </div>
             <p class="mb-0 category-text">Beleza</p>
-        </div>
-
-        <!-- Prêmios -->
+</div>
         <div class="col-6 col-sm-4 col-md-3 col-lg mb-4">
             <div class="category-icon bg-purple rounded-circle d-inline-flex align-items-center justify-content-center mb-2">
                 <i class="fas fa-trophy text-white fa-2x"></i>
@@ -88,7 +90,7 @@
             <p class="mb-0 category-text">Prêmios</p>
         </div>
 
-        <!-- Pets -->
+
         <div class="col-6 col-sm-4 col-md-3 col-lg mb-4">
             <div class="category-icon bg-purple rounded-circle d-inline-flex align-items-center justify-content-center mb-2">
                 <i class="fas fa-paw text-white fa-2x"></i>
@@ -96,7 +98,7 @@
             <p class="mb-0 category-text">Pets</p>
         </div>
 
-        <!-- Eletrônicos -->
+    
         <div class="col-6 col-sm-4 col-md-3 col-lg mb-4">
             <div class="category-icon bg-purple rounded-circle d-inline-flex align-items-center justify-content-center mb-2">
                 <i class="fas fa-mobile-alt text-white fa-2x"></i>
@@ -104,7 +106,7 @@
             <p class="mb-0 category-text">Eletrônicos</p>
         </div>
     </div>
-</div>
+</div> -->
 
     <!-- Product Grid -->
   
@@ -122,12 +124,9 @@
                       
                         <img src="data:image/jpeg;base64,<?php echo base64_encode($produto->produto_imagem); ?>" alt="Produto 1">
                         <div class="product-badges">
-                            <span class="product-badge bg-danger text-white">-20%</span>
-                            <span class="product-badge bg-primary text-white">Novo</span>
+                
                         </div>
-                        <button class="wishlist-btn">
-                            <i class="bi bi-heart"></i>
-                        </button>
+                
                     </div>
                     <div class="product-details">
                         <div class="product-category"></div>

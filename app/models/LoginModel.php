@@ -32,5 +32,26 @@ class LoginModel extends BaseModel
     
     return $this->query($sql, $dados);
   }
+  function atualizar_usuario($dados){
+      $sql ='UPDATE usuario 
+              SET 
+              nome = :nome,
+              senha = AES_ENCRYPT(:senha, "' . MYSQL_AES_KEY . '"),
+              email = AES_ENCRYPT(:email, "' . MYSQL_AES_KEY . '")
+              WHERE id = :id;';
+
+      $this->db_connect();
+      $this->non_query($sql,$dados);
+  }
+  function validar_dados($dados){
+    $sql ='
+          SELECT id 
+          FROM usuario 
+          WHERE 
+            email = AES_ENCRYPT(:email, "' . MYSQL_AES_KEY . '") 
+            AND senha = AES_ENCRYPT(:senha, "' . MYSQL_AES_KEY . '");';
+    $this->db_connect();
+    return $this->query($sql,$dados);
+  }
 
 }

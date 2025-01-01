@@ -43,5 +43,5 @@ class CompraModel extends BaseModel
     
         return $this->query($sql,$id);
     }
-    
+ 
 }

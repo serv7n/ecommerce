@@ -14,12 +14,7 @@ use app\Models\MainModel;
 
 class compra extends baseController
 {
-    function carrinho()
-    {
-        $this->view('layouts/nav');
-        $this->view('index');
-        $this->view('layouts/footer');
-    }
+
 
     function mostrar_comentario()
     {
@@ -128,6 +123,11 @@ class compra extends baseController
         $dados = $CompraModel->pegar_produtos([':id' => $_GET['id']]);
 
         $this->view('checkout',$dados->results[0]);
+        $this->view('layouts/footer');
+    }
+    function carrinho(){
+        $this->view('layouts/nav');
+        $this->view('carrinho');
         $this->view('layouts/footer');
     }
 }

@@ -128,36 +128,7 @@
         </div>
     </div>
 
-    <!-- Depoimentos -->
-    <div class="row mt-5">
-        <div class="col-12">
-            <h3 class="mb-4">O que nossos clientes dizem</h3>
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="d-flex mb-3">
-                                <img src="user1.jpg" class="rounded-circle me-3" width="50" height="50" alt="Cliente">
-                                <div>
-                                    <h6 class="mb-0">Maria Silva</h6>
-                                    <div class="text-warning">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="card-text">"Produto excepcional! Entrega rápida e atendimento nota 10!"</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Adicione mais depoimentos aqui -->
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <!-- Footer -->
 <footer class="bg-light mt-5 py-4">

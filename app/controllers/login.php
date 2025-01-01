@@ -9,7 +9,7 @@ use app\Models\LoginModel;
 class login extends baseController
 {
     // Renderiza a página inicial com o formulário de cadastro
-    
+
     function index()
     {
         if (isset($_SESSION['user'])) {
@@ -100,7 +100,7 @@ class login extends baseController
         // Criação do usuário no banco de dados
         $Login = new LoginModel();
         $Login->cria_usuario(dados: $dados);
-        
+
         // Redireciona para a página de login
         $this->login();
     }
@@ -116,7 +116,7 @@ class login extends baseController
         // Captura os dados do formulário
         $email = $_POST['email'];
         $senha = $_POST['senha'];
-        
+
         // Validações de login
         $error = [];
         if (strlen($senha) < 8) {
@@ -125,7 +125,7 @@ class login extends baseController
         if (!filter_var($email, filter: FILTER_VALIDATE_EMAIL)) {
             $error[] = "E-mail inválido.";
         }
-        
+
         if (!empty($error)) {
             $_SESSION['error'] = $error;
             $this->login();
@@ -141,30 +141,131 @@ class login extends baseController
             ':senha' => $senha,
             ':key' => MYSQL_AES_KEY
         ];
-        
+
         // // Processamento adicional do login aqui, se necessário
         $Login = new LoginModel();
         $user = $Login->logar_usuario($dados)->results;
-        
-        if(empty($user)){
+
+        if (empty($user)) {
             $error[] =  'Usuario nao cadatrado';
             $_SESSION['error'] = $error;
             $this->login();
             return;
         }
         $_SESSION['user'] = get_object_vars($user[0]);
-        
+
         $this->login();
     }
 
-    function logout(){
+    function logout()
+    {
         unset($_SESSION['user']);
         $this->login();
     }
     function perfil()
     {
+        if (empty($_SESSION['user'])) {
+            header('location: index.php');
+            return;
+        }
         $this->view('layouts/nav');
         $this->view('perfil');
         $this->view('layouts/footer');
+        
+        if (!empty($_SESSION['error_perfil'])) {
+            unset($_SESSION['error_perfil']);
+        }
+        
+        if (!empty($_SESSION['error_server'])) {
+            unset($_SESSION['error_server']);
+        }
+        
+        if (!empty($_SESSION['sucess_perfil'])) {
+            unset($_SESSION['sucess_perfil']);
+        }
+
+    }
+    function atualizar_perfil()
+    {
+        if($_SERVER['REQUEST_METHOD'] != 'POST'){
+            die();
+            header('location: index.php?ct=login&mt=perfil');
+        }
+        $nome = $_POST['nome'];
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+        $senha_nova = $_POST['senha_nova'];
+        $senha_confirmada = $_POST['senha_confirmada'];
+
+        // Validações
+        $error = [];
+        if (empty($nome) || empty($email) || empty($senha) || empty($senha_confirmada) || empty($senha_nova)) {
+            $error[] = "Todos os campos são obrigatórios.";
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $error[] = "E-mail inválido.";
+        } elseif ($senha_nova !== $senha_confirmada) {
+            $error[] = "As senhas não coincidem.";
+        }
+  
+        // Senha com requisitos mínimos
+        if (strlen($senha) < 8) {
+            $error[] = "A senha deve conter no mínimo 8 caracteres.";
+        } elseif (!preg_match('/[A-Z]/', $senha)) {
+            $error[] = "A senha deve conter pelo menos uma letra maiúscula.";
+        } elseif (!preg_match('/[a-z]/', $senha)) {
+            $error[] = "A senha deve conter pelo menos uma letra minúscula.";
+        } elseif (!preg_match('/\d/', $senha)) {
+            $error[] = "A senha deve conter pelo menos um número.";
+        } elseif (!preg_match('/[\W_]/', $senha)) {
+            $error[] = "A senha deve conter pelo menos um caractere especial.";
+        }
+
+        // Exibe erros e interrompe caso existam
+        if (!(empty($error))) {
+            $_SESSION['error_perfil'] = $error;
+            $this->perfil();
+            return;
+        }
+
+        // Validação de credenciais
+        $dados_de_validacao = [
+            ':email' => $email,
+            ':senha' => $senha
+        ];
+
+        $LoginModel = new LoginModel();
+        $resultado = $LoginModel->validar_dados($dados_de_validacao);
+
+        if (empty($resultado->results) || $resultado->results[0]->id !== $_SESSION['user']['id']) {
+            $_SESSION['error_server'] = 'Credenciais não batem.';
+            
+            $this->perfil();
+            return;
+        }
+
+        // Atualização de dados
+        $dados_atualizar = [
+            ':nome' => $nome,
+            ':senha' => $senha_nova,
+            ':email' => $email,
+            ':id' => $_SESSION['user']['id']
+        ];
+        $LoginModel->atualizar_usuario($dados_atualizar);
+
+        unset($_SESSION['error_perfil'], $_SESSION['error_server'], $error);
+        $_SESSION['sucess_perfil'] = "sucesso";
+        $dados = [
+            ':email' => $email,
+            ':senha' => $senha_confirmada,
+            ':key' => MYSQL_AES_KEY
+        ];
+
+        $user = $LoginModel->logar_usuario($dados)->results;
+      
+        
+
+        $_SESSION['user'] = get_object_vars($user[0]);
+        header('location: index.php?ct=login&mt=perfil');
+
     }
 }

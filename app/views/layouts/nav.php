@@ -80,62 +80,13 @@
                         <div class="d-flex align-items-center">
                     <!-- Notificações -->
                     <div class="position-relative me-3">
-                        <button class="btn btn-light rounded-circle" type="button" aria-label="Notificações" onclick="toggleNotifications()">
-                            <i class="bi bi-bell"></i>
-                            <span class="notification-badge bg-danger text-white">3</span>
-                        </button>
+                
 
-                        <!-- Pop-up de Notificações -->
-                        <div id="notificationsOverlay" class="notification-overlay">
-                            <div class="notification-popup">
-                                <div class="notification-header">
-                                    <h5 class="mb-0">Notificações</h5>
-                                    <button type="button" class="btn-close" onclick="toggleNotifications()"></button>
-                                </div>
-                                <div class="notification-body">
-                                    <!-- Notificação Individual -->
-                                    <div class="notification-item unread">
-                                        <div class="notification-icon">
-                                            <i class="fas fa-shopping-cart text-primary"></i>
-                                        </div>
-                                        <div class="notification-content">
-                                            <p class="notification-text">Seu pedido #123 foi confirmado</p>
-                                            <small class="notification-time">Há 5 minutos</small>
-                                        </div>
-                                    </div>
-                                    <div class="notification-item">
-                                        <div class="notification-icon">
-                                            <i class="fas fa-tag text-success"></i>
-                                        </div>
-                                        <div class="notification-content">
-                                            <p class="notification-text">Nova promoção disponível!</p>
-                                            <small class="notification-time">Há 2 horas</small>
-                                        </div>
-                                    </div>
-                                    <div class="notification-item">
-                                        <div class="notification-icon">
-                                            <i class="fas fa-info-circle text-info"></i>
-                                        </div>
-                                        <div class="notification-content">
-                                            <p class="notification-text">Atualize seus dados cadastrais</p>
-                                            <small class="notification-time">Há 1 dia</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="notification-footer">
-                                    <button class="btn btn-sm btn-light w-100">Ver todas as notificações</button>
-                                </div>
-                            </div>
-                        </div>
+                    
                     </div>
 
                     <!-- Carrinho -->
-                    <div class="position-relative me-3">
-                        <a class="btn btn-light rounded-circle" href="index.php?ct=compra&mt=ca" aria-label="Carrinho">
-                            <i class="bi bi-cart"></i>
-                            <span class="notification-badge bg-primary text-white">2</span>
-                        </a>
-                    </div>
+                  
                         <div class="dropdown">
                             <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="assets/img/usuario-de-perfil.png" alt="Foto" class="profile-image me-2">
